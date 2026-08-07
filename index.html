@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bidang Aset — BPKPD Kota Mojokerto</title>
+<meta name="description" content="Bidang Aset, Badan Pengelolaan Keuangan dan Pendapatan Daerah (BPKPD) Kota Mojokerto. Layanan usulan SSH, pemanfaatan aset, rekonsiliasi triwulan, dan inventarisasi kendaraan dinas.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brick:#8C3E2A;
+    --brick-deep:#6E2F20;
+    --navy:#1E2A46;
+    --navy-deep:#141C30;
+    --gold:#B4872E;
+    --parchment:#EFE7D8;
+    --card:#FBF7EE;
+    --ink:#2A241D;
+    --ink-soft:#5C5347;
+    --line:#D9CDB4;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--navy-deep);
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:.04em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+
+  /* perforated tag edge, reused as a structural motif */
+  .tag-edge{
+    height:14px;
+    background-image:radial-gradient(circle, var(--parchment) 3.5px, transparent 3.6px);
+    background-size:18px 18px;
+    background-position:center;
+  }
+  .tag-edge.on-navy{background-image:radial-gradient(circle, var(--navy-deep) 3.5px, transparent 3.6px);}
+  .tag-edge.on-card{background-image:radial-gradient(circle, var(--card) 3.5px, transparent 3.6px);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,231,216,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .crest{
+    width:40px; height:40px; border-radius:50%;
+    background:var(--navy-deep);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold); font-family:'Fraunces',serif; font-weight:700; font-size:18px;
+    border:2px solid var(--gold);
+    flex-shrink:0;
+  }
+  .brand-text .eyebrow{
+    font-size:11px; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--ink-soft); font-weight:600;
+  }
+  .brand-text .name{font-weight:700; font-size:15px; color:var(--navy-deep);}
+  nav.links{display:flex; gap:28px; font-size:14px; font-weight:600;}
+  nav.links a{text-decoration:none; color:var(--ink); padding:6px 2px; border-bottom:2px solid transparent;}
+  nav.links a:hover{border-color:var(--brick);}
+  .menu-btn{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-btn span{display:block; width:22px; height:2px; background:var(--navy-deep); margin:5px 0;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--navy-deep);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    padding:72px 0 0;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(180,135,46,.18), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(140,62,42,.35), transparent 45%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center;
+    padding-bottom:56px;
+  }
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold); border:1px solid rgba(180,135,46,.5); padding:6px 12px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .kicker::before{content:"●"; font-size:8px;}
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 62px);
+    line-height:1.03;
+    color:#fff;
+    font-weight:600;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--gold);
+  }
+  .hero p.lead{
+    margin:22px 0 32px;
+    font-size:17px; line-height:1.65;
+    color:#D9D2C4;
+    max-width:46ch;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:2px;
+    font-weight:700; font-size:14px; text-decoration:none;
+    border:1px solid transparent; cursor:pointer; transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-gold{background:var(--gold); color:var(--navy-deep);}
+  .btn-outline{border-color:rgba(255,255,255,.35); color:#fff;}
+  .btn-brick{background:var(--brick); color:#fff;}
+  .btn-brick:hover{background:var(--brick-deep);}
+
+  /* the signature: an asset tag card */
+  .asset-tag{
+    background:var(--card);
+    color:var(--ink);
+    border-radius:4px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.55);
+    transform:rotate(2.5deg);
+    position:relative;
+  }
+  .asset-tag .tag-top{
+    background:var(--brick);
+    color:#fff;
+    padding:14px 20px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .asset-tag .tag-top .label{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  }
+  .asset-tag .tag-body{padding:22px 20px 20px;}
+  .asset-tag .tag-body .item-name{font-family:'Fraunces',serif; font-size:19px; font-weight:600; margin-bottom:4px;}
+  .asset-tag .tag-body .item-sub{font-size:13px; color:var(--ink-soft); margin-bottom:16px;}
+  .asset-tag dl{display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:12.5px; margin:0;}
+  .asset-tag dt{color:var(--ink-soft); font-weight:600;}
+  .asset-tag dd{margin:0; font-family:'JetBrains Mono',monospace;}
+  .asset-tag .barcode{
+    margin-top:16px; height:34px;
+    background:repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 9px);
+    opacity:.85;
+  }
+  .asset-tag .punch{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    width:20px; height:20px; border-radius:50%;
+    background:var(--navy-deep);
+    border:3px solid var(--gold);
+  }
+
+  section{padding:88px 0;}
+  .eyebrow-mono{
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--brick); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px); font-weight:600;}
+  .section-head p{color:var(--ink-soft); font-size:16px; line-height:1.6; margin-top:14px;}
+
+  /* ---------- tentang ---------- */
+  .tentang{background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .pillar{background:var(--card); padding:32px 28px;}
+  .pillar .num{font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:13px; font-weight:600;}
+  .pillar h3{font-size:20px; margin:14px 0 10px; font-weight:600;}
+  .pillar p{color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0;}
+
+  /* ---------- layanan ---------- */
+  .services{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .svc-card{
+    background:var(--card); border:1px solid var(--line); border-radius:3px;
+    padding:26px 26px 24px; display:flex; flex-direction:column; gap:14px;
+    position:relative; overflow:hidden;
+  }
+  .svc-card::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--brick);
+  }
+  .svc-head{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+  .svc-code{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-soft); border:1px solid var(--line); padding:3px 8px; border-radius:999px;}
+  .svc-card h3{font-size:19px; font-weight:600; line-height:1.25;}
+  .svc-card p{color:var(--ink-soft); font-size:14.5px; line-height:1.6; margin:0; flex-grow:1;}
+  .svc-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; font-size:13.5px; text-decoration:none; color:var(--brick);
+    border-top:1px solid var(--line); padding-top:14px; margin-top:4px;
+  }
+  .svc-link:hover{color:var(--brick-deep);}
+  .svc-link .arrow{transition:transform .15s ease;}
+  .svc-link:hover .arrow{transform:translateX(3px);}
+
+  /* ---------- alur ---------- */
+  .alur{background:var(--navy-deep); color:#fff;}
+  .alur .section-head h2{color:#fff;}
+  .alur .section-head p{color:#B9B2A2;}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .step{border-top:2px solid var(--gold); padding-top:18px;}
+  .step .step-num{font-family:'Fraunces',serif; font-size:30px; color:var(--gold); font-weight:600;}
+  .step h4{color:#fff; font-size:15.5px; font-weight:700; margin:10px 0 8px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .step p{color:#B9B2A2; font-size:13.5px; line-height:1.6; margin:0;}
+
+  /* ---------- kontak ---------- */
+  .kontak-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .info-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:20px;}
+  .info-list li{display:flex; gap:16px; padding-bottom:20px; border-bottom:1px solid var(--line);}
+  .info-list .k{font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); width:110px; flex-shrink:0; padding-top:2px;}
+  .info-list .v{font-size:15px; line-height:1.55;}
+  .info-list .v a{color:var(--navy-deep); font-weight:600; text-decoration:underline; text-decoration-color:var(--line);}
+  .notice{
+    background:#F3E9D5; border:1px solid var(--line); border-left:4px solid var(--gold);
+    padding:18px 20px; font-size:13.5px; line-height:1.6; color:var(--ink-soft); border-radius:2px;
+  }
+  .notice strong{color:var(--ink);}
+
+  footer{background:var(--navy-deep); color:#B9B2A2; padding:36px 0; font-size:13px;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  .foot-row a{color:#B9B2A2; text-decoration:none;}
+  .foot-row a:hover{color:#fff;}
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .asset-tag{transform:rotate(0deg); max-width:360px;}
+    .pillars{grid-template-columns:1fr;}
+    .services{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .kontak-grid{grid-template-columns:1fr; gap:36px;}
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--parchment); flex-direction:column; padding:16px 28px;
+      border-bottom:1px solid var(--line);
+      display:none;
+    }
+    nav.links.open{display:flex;}
+    .menu-btn{display:block;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <div class="crest">KM</div>
+      <div class="brand-text">
+        <div class="eyebrow">Pemerintah Kota Mojokerto</div>
+        <div class="name">BPKPD — Bidang Aset</div>
+      </div>
+    </div>
+    <nav class="links" id="navLinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#alur">Alur Pengajuan</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Badan Pengelolaan Keuangan &amp; Pendapatan Daerah</span>
+      <h1>Mencatat, mengamankan,<br>dan mendayagunakan<br><em>aset milik daerah.</em></h1>
+      <p class="lead">Bidang Aset BPKPD Kota Mojokerto mengelola siklus Barang Milik Daerah (BMD) — dari perencanaan kebutuhan, penatausahaan, hingga pemanfaatan — agar tercatat tertib dan bermanfaat bagi pelayanan publik.</p>
+      <div class="cta-row">
+        <a href="#layanan" class="btn btn-gold">Lihat Layanan Online</a>
+        <a href="#kontak" class="btn btn-outline">Hubungi Kami</a>
+      </div>
+    </div>
+    <div class="asset-tag" role="img" aria-label="Contoh label inventaris Barang Milik Daerah">
+      <div class="punch"></div>
+      <div class="tag-top">
+        <span class="label">Barang Milik Daerah</span>
+        <span class="label">BPKPD</span>
+      </div>
+      <div class="tag-body">
+        <div class="item-name">Label Inventaris Aset</div>
+        <div class="item-sub">Pemerintah Kota Mojokerto</div>
+        <dl>
+          <dt>Kode</dt><dd>03.06.02.01.0000</dd>
+          <dt>Bidang</dt><dd>ASET — BPKPD</dd>
+          <dt>Kondisi</dt><dd>BAIK</dd>
+          <dt>Tahun</dt><dd class="mono">2026</dd>
+        </dl>
+        <div class="barcode" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+  <div class="tag-edge on-navy"></div>
+</section>
+
+<section class="tentang" id="tentang">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-mono">Tentang Bidang Aset</span>
+      <h2>Tiga tugas pokok yang menjaga tertib aset daerah</h2>
+      <p>Sesuai tugas dan fungsi, Bidang Aset menjalankan pengelolaan Barang Milik Daerah (BMD) mulai dari pencatatan sampai pengawasan pemanfaatannya, berkoordinasi dengan seluruh Perangkat Daerah selaku pengguna barang.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <span class="num">01</span>
+        <h3>Penatausahaan Aset</h3>
+        <p>Pembukuan, inventarisasi, dan pelaporan Barang Milik Daerah secara berkala, termasuk rekonsiliasi data dengan Perangkat Daerah setiap triwulan.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">02</span>
+        <h3>Pemanfaatan &amp; Penilaian</h3>
+        <p>Memproses usulan pemanfaatan aset (sewa, pinjam pakai, kerja sama) serta usulan Standar Satuan Harga (SSH) untuk kebutuhan barang dan jasa.</p>
+      </div>
+      <div class="pillar">
+        <span class="num">03</span>
+        <h3>Pengamanan Aset</h3>
+        <p>Menjaga status hukum, fisik, dan administratif aset — termasuk kendaraan dinas — agar tercatat akurat dan terlindungi dari risiko kehilangan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="layanan">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-mono">Layanan Online</span>
+      <h2>Formulir yang sering dibutuhkan</h2>
+      <p>Empat formulir berikut dapat diakses langsung secara daring. Tautan akan membuka laman/berkas formulir terkait pada tab baru.</p>
+    </div>
+    <div class="services">
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <h3>Form Usulan SSH</h3>
+          <span class="svc-code">SSH-01</span>
+        </div>
+        <p>Pengajuan usulan Standar Satuan Harga barang/jasa oleh Perangkat Daerah untuk keperluan penyusunan anggaran tahun berjalan.</p>
+        <a class="svc-link" href="#" target="_blank" rel="noopener">Buka formulir <span class="arrow">→</span></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <h3>Form Pemanfaatan Aset</h3>
+          <span class="svc-code">PMF-02</span>
+        </div>
+        <p>Pengajuan usulan pemanfaatan Barang Milik Daerah, mencakup sewa, pinjam pakai, dan kerja sama pemanfaatan.</p>
+        <a class="svc-link" href="#" target="_blank" rel="noopener">Buka formulir <span class="arrow">→</span></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <h3>Rekonsiliasi Triwulan</h3>
+          <span class="svc-code">REK-03</span>
+        </div>
+        <p>Input dan konfirmasi data mutasi aset setiap Perangkat Daerah dalam rangka rekonsiliasi Barang Milik Daerah per triwulan.</p>
+        <a class="svc-link" href="#" target="_blank" rel="noopener">Buka formulir <span class="arrow">→</span></a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-head">
+          <h3>Inventarisasi Kendaraan</h3>
+          <span class="svc-code">KDR-04</span>
+        </div>
+        <p>Pendataan dan pemutakhiran kondisi kendaraan dinas milik Pemerintah Kota Mojokerto pada seluruh Perangkat Daerah.</p>
+        <a class="svc-link" href="#" target="_blank" rel="noopener">Buka formulir <span class="arrow">→</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="alur" id="alur">
+  <div class="tag-edge on-card" style="transform:rotate(180deg)"></div>
+  <div class="wrap" style="padding-top:56px;">
+    <div class="section-head">
+      <span class="eyebrow-mono" style="color:var(--gold);">Alur Singkat</span>
+      <h2>Cara mengajukan usulan</h2>
+      <p>Alur umum berlaku untuk keempat formulir layanan di atas, dengan penyesuaian dokumen pendukung sesuai jenis usulan.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Siapkan dokumen</h4>
+        <p>Kumpulkan data pendukung sesuai jenis usulan (surat pengantar, daftar barang, dokumentasi).</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Isi formulir daring</h4>
+        <p>Pilih formulir yang sesuai pada bagian Layanan Online dan lengkapi seluruh isian.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Verifikasi Bidang Aset</h4>
+        <p>Tim Bidang Aset memeriksa kelengkapan dan kesesuaian data yang diajukan.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Konfirmasi hasil</h4>
+        <p>Hasil verifikasi dan tindak lanjut disampaikan melalui kontak yang tercantum pada formulir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak">
+  <div class="wrap kontak-grid">
+    <div>
+      <span class="eyebrow-mono">Kontak</span>
+      <h2 style="font-size:clamp(26px,3vw,34px); font-weight:600; margin-bottom:28px;">Hubungi Bidang Aset BPKPD</h2>
+      <ul class="info-list">
+        <li>
+          <span class="k">Alamat</span>
+          <span class="v">Jl. Letkol Sumarjo No. 62, Mergelo, Kec. Magersari, Kota Mojokerto, Jawa Timur 61318</span>
+        </li>
+        <li>
+          <span class="k">Telepon</span>
+          <span class="v">(0321) 321753</span>
+        </li>
+        <li>
+          <span class="k">Layanan WA</span>
+          <span class="v">0821-3917-1784 <span style="color:var(--ink-soft); font-weight:400;">(WA layanan umum BPKPD)</span></span>
+        </li>
+        <li>
+          <span class="k">Jam Kerja</span>
+          <span class="v">Senin–Kamis 07.00–15.30 · Jumat 07.00–14.30 WIB</span>
+        </li>
+        <li>
+          <span class="k">Situs Resmi</span>
+          <span class="v"><a href="https://bpkpd.mojokertokota.go.id/" target="_blank" rel="noopener">bpkpd.mojokertokota.go.id</a></span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="notice">
+        <strong>Catatan isi sementara.</strong> Halaman ini adalah rancangan awal (draf) landing page Bidang Aset. Tautan pada bagian Layanan Online (Form Usulan SSH, Form Pemanfaatan, Rekonsiliasi Triwulan, Inventarisasi Kendaraan) masih berupa placeholder <span class="mono">href="#"</span> dan perlu diganti dengan tautan formulir resmi (Google Form / sistem internal) sebelum dipublikasikan. Data kontak diambil dari sumber publik BPKPD Kota Mojokerto dan sebaiknya diverifikasi ulang oleh admin sebelum go-live.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>© 2026 Bidang Aset — BPKPD Kota Mojokerto. Rancangan awal, isi masih sementara.</span>
+    <a href="https://bpkpd.mojokertokota.go.id/" target="_blank" rel="noopener">Situs resmi BPKPD →</a>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
