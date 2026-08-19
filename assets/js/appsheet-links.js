@@ -30,7 +30,7 @@ const APPSHEET_LINKS = [
   { opd: "Dinas Perhubungan",                                              singkatan: "Dishub",     url: "#" },
   { opd: "Dinas Lingkungan Hidup",                                         singkatan: "DLH",        url: "#" },
   { opd: "Dinas Kependudukan dan Pencatatan Sipil",                        singkatan: "Dispendukcapil", url: "#" },
-  { opd: "Dinas Sosial, Pemberdayaan Perempuan dan Perlindungan Anak",     singkatan: "Dinsos P3A", url: "#" },
+  { opd: "Dinas Sosial, Pemberdayaan Perempuan dan Perlindungan Anak",     singkatan: "Dinsos P3A", url: "https://www.appsheet.com/start/877e4c7b-a582-4491-80b6-5eadb50c4c4f" },
   { opd: "Dinas Koperasi, UKM, Perindustrian dan Perdagangan",             singkatan: "Diskoperindag", url: "#" },
   { opd: "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",         singkatan: "DPMPTSP",    url: "#" },
   { opd: "Dinas Pemuda, Olahraga dan Pariwisata",                          singkatan: "Disporapar", url: "#" },
