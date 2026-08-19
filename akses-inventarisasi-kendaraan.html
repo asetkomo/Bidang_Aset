@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akses Inventarisasi Kendaraan (AppSheet) — Bidang Aset BPKPD Kota Mojokerto</title>
+<meta name="description" content="Direktori akses aplikasi AppSheet inventarisasi kendaraan dinas per Perangkat Daerah, Bidang Aset BPKPD Kota Mojokerto.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#konten">Lompat ke konten</a>
+<div class="proto-banner"><b>Versi prototipe</b> — 26 tautan AppSheet di bawah masih berupa <b>placeholder</b>, belum terhubung ke aplikasi sesungguhnya.</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <g stroke="currentColor" stroke-width="2.5">
+          <path d="M50 6 L50 94"/><path d="M6 50 L94 50"/>
+          <path d="M18.7 18.7 L81.3 81.3"/><path d="M81.3 18.7 L18.7 81.3"/>
+        </g>
+        <circle cx="50" cy="50" r="16" fill="currentColor"/>
+        <circle cx="50" cy="50" r="8" fill="#F5EFE1"/>
+      </svg>
+      <span class="brand-text">
+        <span class="kop">Pemerintah Kota Mojokerto · BPKPD</span>
+        <span class="nama">Bidang Aset</span>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#layanan">Layanan</a>
+      <a href="inventarisasi-kendaraan.html">Formulir Kendaraan</a>
+      <a href="index.html#kontak">Kontak</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="konten">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Beranda</a> / <a href="inventarisasi-kendaraan.html">Inventarisasi Kendaraan</a> / Akses AppSheet</div>
+      <span class="eyebrow">Akses Aplikasi · Per OPD</span>
+      <h1>Akses Inventarisasi Kendaraan — AppSheet</h1>
+      <p class="lede">Setiap Perangkat Daerah memiliki tautan aplikasi AppSheet tersendiri untuk mendata dan memutakhirkan inventaris kendaraan dinasnya. Pilih atau cari nama OPD Anda pada daftar di bawah, lalu buka aplikasinya.</p>
+      <div class="meta-row">
+        <div class="meta-pill">Jumlah OPD terdaftar<b>26 Perangkat Daerah</b></div>
+        <div class="meta-pill">Aplikasi<b>Google AppSheet</b></div>
+        <div class="meta-pill">Dikelola oleh<b>Bidang Aset BPKPD</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="directory-toolbar">
+        <label class="directory-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="text" id="search-opd" placeholder="Cari nama atau singkatan OPD…" aria-label="Cari OPD">
+        </label>
+        <span class="directory-count"><b id="count-visible">26</b> dari 26 OPD ditampilkan</span>
+      </div>
+
+      <div class="link-grid" id="link-grid"></div>
+      <p class="no-results" id="no-results">Tidak ada OPD yang cocok dengan pencarian Anda.</p>
+
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="aside-card warn" style="max-width:760px;">
+        <h4>Catatan untuk Admin Bidang Aset</h4>
+        <ul>
+          <li>Seluruh tautan pada halaman ini masih berupa <strong>placeholder ("#")</strong> dan perlu diganti dengan URL AppSheet resmi masing-masing OPD.</li>
+          <li>Untuk mengubah daftar (nama OPD, singkatan, atau URL), sunting satu berkas: <code>assets/js/appsheet-links.js</code> — tidak perlu menyentuh berkas HTML.</li>
+          <li>Kartu yang tautannya masih "#" akan otomatis ditandai <span class="badge-pending">Belum diatur</span> dan tombolnya nonaktif, agar tidak disalahklik oleh pengguna.</li>
+          <li>Nama 26 OPD saat ini adalah draf berdasarkan struktur umum Perangkat Daerah Kota Mojokerto — mohon dicocokkan dengan daftar resmi sebelum publikasi.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Bidang Aset · BPKPD Kota Mojokerto</span>
+      <span>Prototipe front-end — bukan situs resmi</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/appsheet-links.js"></script>
+<script>
+  const grid = document.getElementById('link-grid');
+  const searchInput = document.getElementById('search-opd');
+  const countEl = document.getElementById('count-visible');
+  const noResults = document.getElementById('no-results');
+  const total = APPSHEET_LINKS.length;
+
+  function iconExternal(){
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>`;
+  }
+
+  function render(list){
+    grid.innerHTML = list.map(item => {
+      const pending = !item.url || item.url === '#';
+      return `
+        <div class="link-card ${pending ? 'is-pending' : ''}" data-name="${item.opd.toLowerCase()} ${item.singkatan.toLowerCase()}">
+          <span class="idx">${String(item.no).padStart(2,'0')}</span>
+          <div class="body">
+            <div class="opd-name">${item.opd}</div>
+            <span class="opd-singkatan">${item.singkatan}${pending ? '<span class="badge-pending">Belum diatur</span>' : ''}</span>
+            <a class="open-btn" href="${item.url}" target="_blank" rel="noopener" ${pending ? 'aria-disabled="true" tabindex="-1"' : ''}>
+              Buka Aplikasi ${iconExternal()}
+            </a>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  const dataWithIndex = APPSHEET_LINKS.map((item, i) => ({ ...item, no: i + 1 }));
+  render(dataWithIndex);
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = dataWithIndex.filter(item =>
+      item.opd.toLowerCase().includes(q) || item.singkatan.toLowerCase().includes(q)
+    );
+    render(filtered);
+    countEl.textContent = filtered.length;
+    noResults.style.display = filtered.length ? 'none' : 'block';
+    grid.style.display = filtered.length ? 'grid' : 'none';
+  });
+</script>
+</body>
+</html>
