@@ -1,45 +1,28 @@
-/**
- * appsheet-links.js
- * -----------------------------------------------------------------------
- * DAFTAR 26 LINK APPSHEET INVENTARISASI KENDARAAN — PER OPD.
- *
- * Ini satu-satunya berkas yang perlu Anda ubah untuk memperbarui daftar:
- *   - "opd"   : nama Perangkat Daerah (tampil di kartu)
- *   - "singkatan" : singkatan resmi (tampil sebagai label kecil)
- *   - "url"   : tautan aplikasi AppSheet OPD tersebut.
- *               Placeholder saat ini "#" — ganti dengan URL asli,
- *               format umumnya: https://www.appsheet.com/start/xxxxxxxx-xxxx-...
- *
- * Nama OPD di bawah ini adalah DRAF berdasarkan struktur umum Perangkat
- * Daerah Kota Mojokerto — mohon dicocokkan/disesuaikan dengan daftar resmi
- * dari Bagian Organisasi Setda sebelum dipublikasikan.
- * -----------------------------------------------------------------------
- */
 const APPSHEET_LINKS = [
-  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "#" },
-  { opd: "Sekretariat DPRD",                                               singkatan: "Setwan",     url: "#" },
-  { opd: "Inspektorat",                                                    singkatan: "Itda",       url: "#" },
-  { opd: "Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah", singkatan: "Bapperida", url: "#" },
-  { opd: "Badan Pengelolaan Keuangan dan Pendapatan Daerah",               singkatan: "BPKPD",      url: "#" },
-  { opd: "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",         singkatan: "BKPSDM",     url: "#" },
-  { opd: "Badan Kesatuan Bangsa dan Politik",                              singkatan: "Bakesbangpol", url: "#" },
-  { opd: "Badan Penanggulangan Bencana Daerah",                            singkatan: "BPBD",       url: "#" },
-  { opd: "Dinas Pendidikan dan Kebudayaan",                                singkatan: "Dindikbud",  url: "#" },
-  { opd: "Dinas Kesehatan, Pengendalian Penduduk dan KB",                  singkatan: "Dinkes PPKB", url: "#" },
-  { opd: "Dinas Pekerjaan Umum, Penataan Ruang dan Permukiman",            singkatan: "DPUPR Perakim", url: "#" },
-  { opd: "Dinas Perhubungan",                                              singkatan: "Dishub",     url: "#" },
-  { opd: "Dinas Lingkungan Hidup",                                         singkatan: "DLH",        url: "#" },
-  { opd: "Dinas Kependudukan dan Pencatatan Sipil",                        singkatan: "Dispendukcapil", url: "#" },
+  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "https://www.appsheet.com/start/9487794a-6920-4a2f-bb22-7fae28b735ff" },
+  { opd: "Sekretariat DPRD",                                               singkatan: "Setwan",     url: "https://www.appsheet.com/start/fb229d45-7a9e-4d62-a123-201cfe79cb2a" },
+  { opd: "Inspektorat",                                                    singkatan: "Itda",       url: "https://www.appsheet.com/start/1e79d2aa-b463-4d84-a1f9-6f0797fa51a2" },
+  { opd: "Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah", singkatan: "Bapperida", url: "https://www.appsheet.com/start/2b4cf1f7-20e7-4fea-aeac-022170880f8b" },
+  { opd: "Badan Pengelolaan Keuangan dan Pendapatan Daerah",               singkatan: "BPKPD",      url: "https://www.appsheet.com/start/17381ed0-20a4-41d5-8521-0773cb2059a7" },
+  { opd: "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",         singkatan: "BKPSDM",     url: "https://www.appsheet.com/start/944f8bc9-4483-476d-b40e-48f892bbcc77" },
+  { opd: "Badan Kesatuan Bangsa dan Politik",                              singkatan: "Bakesbangpol", url: "https://www.appsheet.com/start/017c7e7a-621a-4810-bcc1-f7b611fe302b" },
+  { opd: "Badan Penanggulangan Bencana Daerah",                            singkatan: "BPBD",       url: "https://www.appsheet.com/start/257139c7-08cd-4ddb-a9c7-32589db504da" },
+  { opd: "Dinas Pendidikan dan Kebudayaan",                                singkatan: "Dindikbud",  url: "https://www.appsheet.com/start/88945bf6-eaa9-4bbb-bc76-347d894a609c" },
+  { opd: "Dinas Kesehatan, Pengendalian Penduduk dan KB",                  singkatan: "Dinkes PPKB", url: "https://www.appsheet.com/start/5ee5cb48-a527-4756-a5de-0134485bab23" },
+  { opd: "Dinas Pekerjaan Umum, Penataan Ruang dan Permukiman",            singkatan: "DPUPR Perakim", url: "https://www.appsheet.com/start/df8d8143-e7a5-4458-933c-369b42388885" },
+  { opd: "Dinas Perhubungan",                                              singkatan: "Dishub",     url: "https://www.appsheet.com/start/d7c3991c-580c-43e2-84d5-40a945a173b0" },
+  { opd: "Dinas Lingkungan Hidup",                                         singkatan: "DLH",        url: "https://www.appsheet.com/start/e0a581c1-8aa5-42bb-ba18-b782d207dba3" },
+  { opd: "Dinas Kependudukan dan Pencatatan Sipil",                        singkatan: "Dispendukcapil", url: "https://www.appsheet.com/start/31ab5d3a-4a3e-402b-90ac-dd03d8431c5c" },
   { opd: "Dinas Sosial, Pemberdayaan Perempuan dan Perlindungan Anak",     singkatan: "Dinsos P3A", url: "https://www.appsheet.com/start/877e4c7b-a582-4491-80b6-5eadb50c4c4f" },
-  { opd: "Dinas Koperasi, UKM, Perindustrian dan Perdagangan",             singkatan: "Diskoperindag", url: "#" },
-  { opd: "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",         singkatan: "DPMPTSP",    url: "#" },
-  { opd: "Dinas Pemuda, Olahraga dan Pariwisata",                          singkatan: "Disporapar", url: "#" },
-  { opd: "Dinas Perpustakaan dan Kearsipan",                               singkatan: "Dispersip",  url: "#" },
-  { opd: "Dinas Ketahanan Pangan dan Pertanian",                           singkatan: "DKPP",       url: "#" },
-  { opd: "Dinas Komunikasi dan Informatika",                               singkatan: "Diskominfo", url: "#" },
-  { opd: "Satuan Polisi Pamong Praja dan Pemadam Kebakaran",               singkatan: "Satpol PP & Damkar", url: "#" },
-  { opd: "Rumah Sakit Umum Daerah dr. Wahidin Sudiro Husodo",              singkatan: "RSUD WSH",   url: "#" },
-  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "#" },
-  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "#" },
-  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "#" },
+  { opd: "Dinas Koperasi, UKM, Perindustrian dan Perdagangan",             singkatan: "Diskoperindag", url: "https://www.appsheet.com/start/4e0a8e6f-6f3a-4ab5-8548-aee1a868a855" },
+  { opd: "Dinas Penanaman Modal dan Pelayanan Terpadu Satu Pintu",         singkatan: "DPMPTSP",    url: "https://www.appsheet.com/start/6d01165a-88eb-472b-aa3a-8850603292ba" },
+  { opd: "Dinas Pemuda, Olahraga dan Pariwisata",                          singkatan: "Disporapar", url: "https://www.appsheet.com/start/5b96a649-c983-4540-bce0-e280dbe54d22" },
+  { opd: "Dinas Perpustakaan dan Kearsipan",                               singkatan: "Dispersip",  url: "https://www.appsheet.com/start/e4491a34-2747-4c8b-9484-ea2e3b7dd742" },
+  { opd: "Dinas Ketahanan Pangan dan Pertanian",                           singkatan: "DKPP",       url: "https://www.appsheet.com/start/6d8d44f1-ba7c-4cf9-b363-04752845b1c0" },
+  { opd: "Dinas Komunikasi dan Informatika",                               singkatan: "Diskominfo", url: "https://www.appsheet.com/start/d69de324-b906-4221-97c5-53cae5c2a6ee" },
+  { opd: "Satuan Polisi Pamong Praja",                                     singkatan: "Satpol PP", url: "https://www.appsheet.com/start/a9dd1ecd-11e9-40e0-93a3-709a2258dae7" },
+  { opd: "Rumah Sakit Umum Daerah dr. Wahidin Sudiro Husodo",              singkatan: "RSUD WSH",   url: "https://www.appsheet.com/start/17380f9d-769e-425d-a260-0dd8f1fd7664" },
+  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "https://www.appsheet.com/start/616203f1-4bfb-475b-b79b-1fbcb596d421" },
+  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "https://www.appsheet.com/start/d27bfbfb-a56e-4301-bcc3-f0c31a8b513a" },
+  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "https://www.appsheet.com/start/0332b379-ab02-40ac-8279-5771931068eb" },
 ];
