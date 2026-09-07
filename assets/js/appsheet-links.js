@@ -3,7 +3,7 @@ const APPSHEET_LINKS = [
   { opd: "Sekretariat DPRD",                                               singkatan: "Setwan",     url: "https://www.appsheet.com/start/fb229d45-7a9e-4d62-a123-201cfe79cb2a" },
   { opd: "Inspektorat",                                                    singkatan: "Itda",       url: "https://www.appsheet.com/start/1e79d2aa-b463-4d84-a1f9-6f0797fa51a2" },
   { opd: "Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah", singkatan: "Bapperida", url: "https://www.appsheet.com/start/2b4cf1f7-20e7-4fea-aeac-022170880f8b" },
-  { opd: "Badan Pengelolaan Keuangan dan Pendapatan Daerah",               singkatan: "BPKPD",      url: "https://www.appsheet.com/start/17381ed0-20a4-41d5-8521-0773cb2059a7" },
+  { opd: "Badan Pengelolaan Keuangan dan Pendapatan Daerah",               singkatan: "BPKPD",      url: "https://www.appsheet.com/start/0ff64767-1e79-4cf6-abec-12f3e22f25dd" },
   { opd: "Badan Kepegawaian dan Pengembangan Sumber Daya Manusia",         singkatan: "BKPSDM",     url: "https://www.appsheet.com/start/944f8bc9-4483-476d-b40e-48f892bbcc77" },
   { opd: "Badan Kesatuan Bangsa dan Politik",                              singkatan: "Bakesbangpol", url: "https://www.appsheet.com/start/017c7e7a-621a-4810-bcc1-f7b611fe302b" },
   { opd: "Badan Penanggulangan Bencana Daerah",                            singkatan: "BPBD",       url: "https://www.appsheet.com/start/257139c7-08cd-4ddb-a9c7-32589db504da" },
