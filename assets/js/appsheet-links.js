@@ -1,5 +1,5 @@
 const APPSHEET_LINKS = [
-  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "https://www.appsheet.com/start/9487794a-6920-4a2f-bb22-7fae28b735ff" },
+  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "https://www.appsheet.com/start/23fd9d46-22ee-408d-b046-e5dcb3f17fe8" },
   { opd: "Sekretariat DPRD",                                               singkatan: "Setwan",     url: "https://www.appsheet.com/start/fb229d45-7a9e-4d62-a123-201cfe79cb2a" },
   { opd: "Inspektorat",                                                    singkatan: "Itda",       url: "https://www.appsheet.com/start/1e79d2aa-b463-4d84-a1f9-6f0797fa51a2" },
   { opd: "Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah", singkatan: "Bapperida", url: "https://www.appsheet.com/start/6cc3f978-3365-44df-af1c-b0c74891a411" },
@@ -8,7 +8,7 @@ const APPSHEET_LINKS = [
   { opd: "Badan Kesatuan Bangsa dan Politik",                              singkatan: "Bakesbangpol", url: "https://www.appsheet.com/start/017c7e7a-621a-4810-bcc1-f7b611fe302b" },
   { opd: "Badan Penanggulangan Bencana Daerah",                            singkatan: "BPBD",       url: "https://www.appsheet.com/start/257139c7-08cd-4ddb-a9c7-32589db504da" },
   { opd: "Dinas Pendidikan dan Kebudayaan",                                singkatan: "Dindikbud",  url: "https://www.appsheet.com/start/88945bf6-eaa9-4bbb-bc76-347d894a609c" },
-  { opd: "Dinas Kesehatan, Pengendalian Penduduk dan KB",                  singkatan: "Dinkes PPKB", url: "https://www.appsheet.com/start/5ee5cb48-a527-4756-a5de-0134485bab23" },
+  { opd: "Dinas Kesehatan, Pengendalian Penduduk dan KB",                  singkatan: "Dinkes PPKB", url: "https://www.appsheet.com/start/7206598a-4830-4ad1-8361-15889fe21971" },
   { opd: "Dinas Pekerjaan Umum, Penataan Ruang dan Permukiman",            singkatan: "DPUPR Perakim", url: "https://www.appsheet.com/start/df8d8143-e7a5-4458-933c-369b42388885" },
   { opd: "Dinas Perhubungan",                                              singkatan: "Dishub",     url: "https://www.appsheet.com/start/d7c3991c-580c-43e2-84d5-40a945a173b0" },
   { opd: "Dinas Lingkungan Hidup",                                         singkatan: "DLH",        url: "https://www.appsheet.com/start/e0a581c1-8aa5-42bb-ba18-b782d207dba3" },
@@ -22,7 +22,7 @@ const APPSHEET_LINKS = [
   { opd: "Dinas Komunikasi dan Informatika",                               singkatan: "Diskominfo", url: "https://www.appsheet.com/start/d69de324-b906-4221-97c5-53cae5c2a6ee" },
   { opd: "Satuan Polisi Pamong Praja",                                     singkatan: "Satpol PP", url: "https://www.appsheet.com/start/a9dd1ecd-11e9-40e0-93a3-709a2258dae7" },
   { opd: "Rumah Sakit Umum Daerah dr. Wahidin Sudiro Husodo",              singkatan: "RSUD WSH",   url: "https://www.appsheet.com/start/17380f9d-769e-425d-a260-0dd8f1fd7664" },
-  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "https://www.appsheet.com/start/616203f1-4bfb-475b-b79b-1fbcb596d421" },
-  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "https://www.appsheet.com/start/d27bfbfb-a56e-4301-bcc3-f0c31a8b513a" },
-  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "https://www.appsheet.com/start/0332b379-ab02-40ac-8279-5771931068eb" },
+  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "https://www.appsheet.com/start/82647e37-7daa-47bb-a031-9ffbb43f6055" },
+  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "https://www.appsheet.com/start/9217270c-8a63-4119-8e13-5b8f34771604" },
+  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "https://www.appsheet.com/start/a74bb583-74f4-4b78-9c3b-b55fba544596" },
 ];
