@@ -1,5 +1,5 @@
 const APPSHEET_LINKS = [
-  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "https://www.appsheet.com/start/23fd9d46-22ee-408d-b046-e5dcb3f17fe8" },
+  { opd: "Sekretariat Daerah",                                             singkatan: "Setda",      url: "https://www.appsheet.com/start/e559486f-f2d9-4b2f-8cc7-47029ccd3b7b" },
   { opd: "Sekretariat DPRD",                                               singkatan: "Setwan",     url: "https://www.appsheet.com/start/fb229d45-7a9e-4d62-a123-201cfe79cb2a" },
   { opd: "Inspektorat",                                                    singkatan: "Itda",       url: "https://www.appsheet.com/start/1e79d2aa-b463-4d84-a1f9-6f0797fa51a2" },
   { opd: "Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Daerah", singkatan: "Bapperida", url: "https://www.appsheet.com/start/6cc3f978-3365-44df-af1c-b0c74891a411" },
