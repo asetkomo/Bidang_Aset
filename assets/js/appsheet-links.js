@@ -22,7 +22,7 @@ const APPSHEET_LINKS = [
   { opd: "Dinas Komunikasi dan Informatika",                               singkatan: "Diskominfo", url: "https://www.appsheet.com/start/d69de324-b906-4221-97c5-53cae5c2a6ee" },
   { opd: "Satuan Polisi Pamong Praja",                                     singkatan: "Satpol PP", url: "https://www.appsheet.com/start/a9dd1ecd-11e9-40e0-93a3-709a2258dae7" },
   { opd: "Rumah Sakit Umum Daerah dr. Wahidin Sudiro Husodo",              singkatan: "RSUD WSH",   url: "https://www.appsheet.com/start/17380f9d-769e-425d-a260-0dd8f1fd7664" },
-  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "https://www.appsheet.com/start/82647e37-7daa-47bb-a031-9ffbb43f6055" },
-  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "https://www.appsheet.com/start/9217270c-8a63-4119-8e13-5b8f34771604" },
-  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "https://www.appsheet.com/start/a74bb583-74f4-4b78-9c3b-b55fba544596" },
+  { opd: "Kecamatan Prajurit Kulon",                                      singkatan: "Kec. Prajurit Kulon", url: "https://www.appsheet.com/start/06aa849d-a160-42f9-a6f4-e598f3453b12" },
+  { opd: "Kecamatan Magersari",                                           singkatan: "Kec. Magersari", url: "https://www.appsheet.com/start/721887fa-a742-4dc5-98e9-0aa3dd684f4f" },
+  { opd: "Kecamatan Kranggan",                                            singkatan: "Kec. Kranggan", url: "https://www.appsheet.com/start/9d120e77-78ea-4f72-bde8-f3f0e0d64be9" },
 ];
