@@ -268,6 +268,114 @@
     html{scroll-behavior:auto;}
     .btn:hover{transform:none;}
   }
+
+  /* ---------- penyempurnaan visual & aksesibilitas ---------- */
+  :root {
+    --radius: 8px;
+    --shadow-soft: 0 12px 32px rgba(20, 28, 48, .08);
+  }
+
+  .brand-logo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex: 0 0 48px;
+  }
+
+  .wrap { width: min(100% - 40px, 1160px); padding-left: 0; padding-right: 0; }
+  .nav { min-height: 78px; gap: 24px; }
+  .brand { min-width: 0; }
+  .brand-text .name { line-height: 1.35; }
+  nav.links { align-items: center; gap: clamp(14px, 2.2vw, 28px); }
+  nav.links a { transition: color .2s ease, border-color .2s ease; }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--brick); }
+
+  .hero { padding-top: clamp(54px, 7vw, 84px); }
+  .hero-grid { gap: clamp(30px, 5vw, 64px); }
+  .hero h1 { max-width: 760px; }
+  .hero p.lead { max-width: 58ch; }
+  .asset-tag { border-radius: 10px; }
+  .asset-tag .tag-top { border-radius: 10px 10px 0 0; }
+  .asset-tag .tag-body { padding: 26px 24px 24px; }
+
+  .btn { border-radius: 6px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+  .btn:hover { box-shadow: 0 8px 18px rgba(0,0,0,.16); }
+  .btn:focus-visible, .svc-link:focus-visible, nav.links a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+  }
+
+  .pillar, .svc-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .pillar { padding: 34px 30px; }
+  .svc-card {
+    border-radius: 8px;
+    padding: 28px 28px 24px 30px;
+    box-shadow: 0 3px 12px rgba(20, 28, 48, .035);
+  }
+  .svc-card:hover {
+    transform: translateY(-4px);
+    border-color: #c5b48f;
+    box-shadow: var(--shadow-soft);
+  }
+  .svc-card::before { width: 5px; }
+  .svc-link { width: fit-content; }
+  .steps { gap: 28px; }
+  .step { padding-right: 8px; }
+  .notice { border-radius: 8px; }
+  footer { border-top: 3px solid var(--gold); }
+
+  /* Smooth anchor navigation without hiding headings under sticky header. */
+  section[id] { scroll-margin-top: 92px; }
+
+  @media (max-width: 860px) {
+    .wrap { width: min(100% - 36px, 680px); }
+    .nav { min-height: 70px; padding: 10px 0; }
+    nav.links {
+      top: 100%;
+      padding: 18px max(18px, calc((100vw - 680px) / 2));
+      gap: 8px;
+      box-shadow: 0 12px 18px rgba(20, 28, 48, .08);
+    }
+    nav.links a { padding: 10px 4px; }
+    .hero { padding-top: 52px; }
+    .hero-grid { padding-bottom: 48px; }
+    .asset-tag { width: min(100%, 380px); }
+    section { padding: 68px 0; }
+  }
+
+  @media (max-width: 560px) {
+    .wrap { width: min(100% - 32px, 480px); }
+    .brand { gap: 9px; }
+    .brand-logo { width: 40px; height: 40px; flex-basis: 40px; }
+    .brand-text .eyebrow { font-size: 9px; letter-spacing: .08em; }
+    .brand-text .name { font-size: 13px; }
+    .menu-btn { flex: 0 0 auto; }
+    .hero { padding-top: 42px; }
+    .kicker { font-size: 10px; letter-spacing: .08em; }
+    .hero h1 { font-size: clamp(35px, 10vw, 48px); }
+    .hero p.lead { font-size: 15px; }
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .cta-row .btn { justify-content: center; }
+    .asset-tag .tag-body { padding: 20px 18px; }
+    .pillars { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; gap: 24px; }
+    .kontak-grid { gap: 28px; }
+    .info-list li { gap: 10px; }
+    .info-list .k { width: 92px; font-size: 10px; }
+    .info-list .v { font-size: 13px; overflow-wrap: anywhere; }
+    .foot-row { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      transition-duration: .01ms !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -275,19 +383,19 @@
 <header>
  <div class="wrap nav"> 
     <div class="brand"> 
-        <img src="assets/logo.png" alt="Logo Kota Mojokerto">
+        <img class="brand-logo" src="assets/logo.png" alt="Lambang Pemerintah Kota Mojokerto" width="48" height="48">
       <div class="brand-text"> 
         <div class="eyebrow">Pemerintah Kota Mojokerto</div> 
         <div class="name">BPKPD — Bidang Aset</div> 
       </div> 
     </div>
-    <nav class="links" id="navLinks">
+    <nav class="links" id="navLinks" aria-label="Navigasi utama">
       <a href="#tentang">Tentang</a>
       <a href="#layanan">Layanan</a>
       <a href="#alur">Alur Pengajuan</a>
       <a href="#kontak">Kontak</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Buka menu" aria-controls="navLinks" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -395,7 +503,7 @@
           <span class="svc-code">KDR-04</span>
         </div>
         <p>Pendataan dan pemutakhiran kondisi kendaraan dinas milik Pemerintah Kota Mojokerto pada seluruh Perangkat Daerah.</p>
-        <a class="svc-link" href="akses-inventarisasi-kendaraan.html" target="_blank" rel="noopener">Buka formulir <span class="arrow">→</span></a>
+        <a class="svc-link" href="akses-inventarisasi-kendaraan.html">Buka formulir <span class="arrow">→</span></a>
       </div>
        <div class="svc-card">
         <div class="svc-head">
@@ -424,7 +532,7 @@
     <div class="section-head">
       <span class="eyebrow-mono" style="color:var(--gold);">Alur Singkat</span>
       <h2>Cara mengajukan usulan</h2>
-      <p>Alur umum berlaku untuk keempat formulir layanan di atas, dengan penyesuaian dokumen pendukung sesuai jenis usulan.</p>
+      <p>Alur umum berikut menjadi panduan awal. Persyaratan dan tahapan dapat berbeda sesuai jenis layanan serta ketentuan yang berlaku.</p>
     </div>
     <div class="steps">
       <div class="step">
@@ -481,7 +589,7 @@
     </div>
     <div>
       <div class="notice">
-        <strong>Catatan isi sementara.</strong> Halaman ini adalah rancangan awal (draf) landing page Bidang Aset. Tautan pada bagian Layanan Online (Form Usulan SSH, Form Pemanfaatan, Rekonsiliasi Triwulan, Inventarisasi Kendaraan) masih berupa placeholder <span class="mono">href="#"</span> dan perlu diganti dengan tautan formulir resmi (Google Form / sistem internal) sebelum dipublikasikan. Data kontak diambil dari sumber publik BPKPD Kota Mojokerto dan sebaiknya diverifikasi ulang oleh admin sebelum go-live.
+        <strong>Informasi layanan.</strong> Silakan pilih layanan sesuai kebutuhan Perangkat Daerah. Pastikan data dan dokumen pendukung telah disiapkan sebelum mengisi formulir atau menggunakan aplikasi. Untuk konfirmasi persyaratan, hubungi kanal komunikasi resmi BPKPD Kota Mojokerto.
       </div>
     </div>
   </div>
@@ -489,22 +597,54 @@
 
 <footer>
   <div class="wrap foot-row">
-    <span>© 2026 Bidang Aset — BPKPD Kota Mojokerto. Rancangan awal, isi masih sementara.</span>
+    <span>© <span id="year">2026</span> Bidang Aset — BPKPD Kota Mojokerto. Seluruh hak cipta dilindungi.</span>
     <a href="https://bpkpd.mojokertokota.go.id/" target="_blank" rel="noopener">Situs resmi BPKPD →</a>
   </div>
 </footer>
 
 <script>
-  const btn = document.getElementById('menuBtn');
-  const nav = document.getElementById('navLinks');
-  btn.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-  }));
+  (() => {
+    const menuButton = document.getElementById('menuBtn');
+    const navigation = document.getElementById('navLinks');
+    const year = document.getElementById('year');
+
+    if (year) year.textContent = new Date().getFullYear();
+
+    if (!menuButton || !navigation) return;
+
+    const closeMenu = () => {
+      navigation.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Buka menu');
+    };
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+    });
+
+    navigation.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860) closeMenu();
+    });
+  })();
 </script>
 
 </body>
